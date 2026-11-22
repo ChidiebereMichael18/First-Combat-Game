@@ -1,0 +1,11 @@
+Model Information:
+* title:	Enviroment Clash Royal
+* source:	https://sketchfab.com/3d-models/enviroment-clash-royal-b3c9d4fa0cb34e00b4eebbd7a955b58f
+* author:	balles (https://sketchfab.com/balles)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Enviroment Clash Royal" (https://sketchfab.com/3d-models/enviroment-clash-royal-b3c9d4fa0cb34e00b4eebbd7a955b58f) by balles (https://sketchfab.com/balles) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

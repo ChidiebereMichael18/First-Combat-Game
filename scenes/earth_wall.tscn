@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://j575645efgxo"]
+
+[ext_resource type="Script" uid="uid://b60bh7qg6j3cd" path="res://scripts/earth_wall.gd" id="1_8mado"]
+[ext_resource type="PackedScene" uid="uid://ucu3hr7tonlr" path="res://assets/rocks/marble_rock_03_1k.gltf" id="3_cxtg6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cxtg6"]
+size = Vector3(4, 3.5, 1.5)
+
+[node name="EarthWall" type="Area3D" unique_id=339800653]
+script = ExtResource("1_8mado")
+rocks = Array[PackedScene]([ExtResource("3_cxtg6")])
+lifetime = 8.0
+solid_size = Vector3(0, 2, 0)
+
+[node name="Solid" type="StaticBody3D" parent="." unique_id=1622092996]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Solid" unique_id=1664310025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+shape = SubResource("BoxShape3D_cxtg6")

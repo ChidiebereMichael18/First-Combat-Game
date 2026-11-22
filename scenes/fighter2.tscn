@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://c37a5erdihnby"]
+
+[ext_resource type="Script" uid="uid://opgavet7apbh" path="res://scripts/fighter.gd" id="1_6a3fd"]
+[ext_resource type="PackedScene" uid="uid://bxlttcyjq5kfi" path="res://scenes/air_blast.tscn" id="2_yymxc"]
+[ext_resource type="PackedScene" path="res://scenes/water_orb.tscn" id="3_m8tqb"]
+[ext_resource type="PackedScene" uid="uid://cpnkyllaos6df" path="res://scenes/rock.tscn" id="4_xu5ix"]
+[ext_resource type="PackedScene" uid="uid://d0lu72naa57u0" path="res://scenes/fireball.tscn" id="5_noiaf"]
+[ext_resource type="PackedScene" uid="uid://cgmnikkvx4rpk" path="res://scenes/air_shield.tscn" id="6_dmpcv"]
+[ext_resource type="PackedScene" uid="uid://by8i2jeh0ff8b" path="res://scenes/ice_wall.tscn" id="7_pgxaj"]
+[ext_resource type="PackedScene" uid="uid://j575645efgxo" path="res://scenes/earth_wall.tscn" id="8_duawg"]
+[ext_resource type="PackedScene" uid="uid://egjysgnqvyij" path="res://scenes/firewall.tscn" id="9_tnnl2"]
+[ext_resource type="PackedScene" uid="uid://bq177e0gcysti" path="res://scenes/hit_burst.tscn" id="10_e6r3g"]
+[ext_resource type="PackedScene" uid="uid://dp3uo6p817iqq" path="res://assets/characters/exo_red.fbx" id="11_6a3fd"]
+[ext_resource type="Animation" uid="uid://u153tyhsuh4q" path="res://assets/models/anims/attack.res" id="12_nf4w0"]
+[ext_resource type="Animation" uid="uid://eee1ml8lliy1" path="res://assets/models/anims/block.res" id="13_6ux2l"]
+[ext_resource type="Animation" uid="uid://61ihxyns3aso" path="res://assets/models/anims/cast2.res" id="14_ldneo"]
+[ext_resource type="Animation" uid="uid://b4jku0te7dpeq" path="res://assets/models/anims/death.res" id="15_iwpog"]
+[ext_resource type="Animation" uid="uid://rcuiuc2odqsa" path="res://assets/models/anims/fall.res" id="16_bh7ss"]
+[ext_resource type="Animation" uid="uid://bw8kflnxpf7v4" path="res://assets/models/anims/flip.res" id="17_1plll"]
+[ext_resource type="Animation" uid="uid://rh8ax7up6ca" path="res://assets/models/anims/hit.res" id="18_ua5t7"]
+[ext_resource type="Animation" path="res://assets/models/anims/idle.anim" id="19_81npg"]
+[ext_resource type="Animation" uid="uid://be44ndk0pr0nb" path="res://assets/models/anims/jump.res" id="20_iyvpg"]
+[ext_resource type="Animation" uid="uid://csnv4lmaxsegq" path="res://assets/models/anims/kick.res" id="21_pi4xx"]
+[ext_resource type="Animation" uid="uid://dgtuto6lrjl55" path="res://assets/models/anims/run.res" id="22_7fwer"]
+[ext_resource type="Animation" uid="uid://1be1c578cd5p" path="res://assets/models/anims/uppercut.res" id="23_xllxb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fulsm"]
+_data = {
+&"attack": ExtResource("12_nf4w0"),
+&"block": ExtResource("13_6ux2l"),
+&"cast2": ExtResource("14_ldneo"),
+&"death": ExtResource("15_iwpog"),
+&"fall": ExtResource("16_bh7ss"),
+&"flip": ExtResource("17_1plll"),
+&"hit": ExtResource("18_ua5t7"),
+&"idle": ExtResource("19_81npg"),
+&"jump": ExtResource("20_iyvpg"),
+&"kick": ExtResource("21_pi4xx"),
+&"run": ExtResource("22_7fwer"),
+&"uppercut": ExtResource("23_xllxb")
+}
+
+[node name="Fighter" type="CharacterBody3D" unique_id=557083646]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_6a3fd")
+difficulty = 0
+element_scenes = Array[PackedScene]([ExtResource("2_yymxc"), ExtResource("3_m8tqb"), ExtResource("4_xu5ix"), ExtResource("5_noiaf")])
+defense_scenes = Array[PackedScene]([ExtResource("6_dmpcv"), ExtResource("7_pgxaj"), ExtResource("8_duawg"), ExtResource("9_tnnl2")])
+hit_scene = ExtResource("10_e6r3g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1877645103]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_u8vuu")
+debug_color = Color(0.6112911, 0.5328059, 0.23029432, 0.41960785)
+
+[node name="Model" type="Node3D" parent="." unique_id=1018968455]
+
+[node name="Charcter" parent="Model" unique_id=827880246 instance=ExtResource("11_6a3fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08583093, 0.12049925, 0.049004555)
+
+[node name="Skeleton3D" parent="Model/Charcter" index="0" unique_id=553954681]
+bones/53/rotation = Quaternion(-0.10162576, 0, 0, 0.99482274)
+bones/54/rotation = Quaternion(0.5381369, 0.58411235, -0.48053312, 0.3718997)
+bones/58/rotation = Quaternion(0.05723607, 0.48237294, 0.33895677, 0.8056977)
+bones/82/rotation = Quaternion(0.05723607, -0.48237294, -0.33895677, 0.8056977)
+bones/103/rotation = Quaternion(-0.019579908, 3.200184e-08, -1.6860386e-06, 0.9998083)
+bones/104/rotation = Quaternion(0.3182784, 0.045485765, 0.0059595606, 0.9468867)
+bones/107/rotation = Quaternion(-0.005847191, -0.006271319, 0.9999632, 0.00021850475)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Model/Charcter/Skeleton3D" index="8" unique_id=1133414730]
+transform = Transform3D(0.01745236, -0.9998477, 2.9802322e-08, 4.5216797e-08, -2.90176e-08, -1, 0.99984753, 0.01745242, -3.72529e-09, -0.7401986, 1.4459999, -0.049975857)
+bone_name = "mixamorig_RightHand"
+bone_idx = 81
+
+[node name="HandMarker" type="Marker3D" parent="Model/Charcter/Skeleton3D/BoneAttachment3D" unique_id=382955427]
+unique_name_in_owner = true
+
+[node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Model/Charcter/Skeleton3D" index="9" unique_id=806631716]
+transform = Transform3D(-0.9999316, 9.4612275e-05, -0.011702007, 0.00051030127, -0.99866366, -0.051679354, -0.011691258, -0.051681783, 0.9985951, -0.096489556, 0.5142569, -0.0055833673)
+bone_name = "mixamorig_RightLeg"
+bone_idx = 108
+
+[node name="FootMarker" type="Marker3D" parent="Model/Charcter/Skeleton3D/BoneAttachment3D2" unique_id=1635821509]
+unique_name_in_owner = true
+visible = false
+
+[node name="Anim" type="AnimationPlayer" parent="." unique_id=2110644934]
+libraries/ = SubResource("AnimationLibrary_fulsm")
+autoplay = &"idle"
+
+[editable path="Model/Charcter"]

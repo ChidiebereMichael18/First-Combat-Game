@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bxlttcyjq5kfi"]
+
+[ext_resource type="Script" uid="uid://cfugx6v7jo40l" path="res://scripts/fireball.gd" id="1_n3pjv"]
+[ext_resource type="PackedScene" uid="uid://cv2a3qrm1wctd" path="res://scenes/air_tornado_vfx.tscn" id="3_rna7o"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gxhll"]
+radius = 0.5060721
+
+[node name="AirBall" type="Area3D" unique_id=181383799]
+script = ExtResource("1_n3pjv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1754930848]
+transform = Transform3D(0.9512612, 0, -0.30838618, 0, 1, 0, 0.30838618, 0, 0.9512612, 1.3801459, 0, 0.2646824)
+shape = SubResource("SphereShape3D_gxhll")
+
+[node name="tornado Blue" parent="." unique_id=823054500 instance=ExtResource("3_rna7o")]
+transform = Transform3D(-0.0006829993, 0.008599656, -0.14975174, 0.14952914, 0.011875871, 7.047808e-10, 0.011856215, -0.14928165, -0.008626736, 0.739259, -1.1973791, -0.45507026)

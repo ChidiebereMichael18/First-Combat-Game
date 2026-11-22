@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cgmnikkvx4rpk"]
+
+[ext_resource type="Script" uid="uid://cx24iwfa1bted" path="res://scripts/fire_wall.gd" id="1_sbtkv"]
+[ext_resource type="PackedScene" uid="uid://215p8nwsttrx" path="res://scenes/air_shield_vfx.tscn" id="2_rcpwh"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nn4ef"]
+height = 3.5
+radius = 2.2
+
+[node name="AirShield" type="Area3D" unique_id=620677577]
+script = ExtResource("1_sbtkv")
+follow_owner = true
+spawn_distance = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1465128416]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+shape = SubResource("CylinderShape3D_nn4ef")
+
+[node name="Visual" type="Node3D" parent="." unique_id=159036591]
+
+[node name="shield_basic2" parent="Visual" unique_id=509388490 instance=ExtResource("2_rcpwh")]
+transform = Transform3D(4.5, 0, 0, 0, 4.5, 0, 0, 0, 4.5, 0, 0, 0)

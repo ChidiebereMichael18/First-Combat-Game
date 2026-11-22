@@ -1,0 +1,8 @@
+res://scenes/main_menu.tscn
+res://assets/vfx/tornado/whiteT.tres
+res://assets/vfx/shield-vfx/shield_basic2.tres
+res://scripts/ice.gdshader
+res://scripts/air_blast.gdshader
+res://scripts/water_orb.gdshader
+res://scripts/water_stream.gdshader
+res://scripts/player.gd

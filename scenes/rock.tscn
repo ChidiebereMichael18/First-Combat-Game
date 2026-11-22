@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://cpnkyllaos6df"]
+
+[ext_resource type="Script" uid="uid://cfugx6v7jo40l" path="res://scripts/fireball.gd" id="1_1di36"]
+[ext_resource type="Texture2D" uid="uid://rf4j5yhvohfs" path="res://assets/PNG (Transparent)/smoke_01.png" id="2_mek2u"]
+[ext_resource type="PackedScene" uid="uid://dy0x6qofgf6r0" path="res://assets/rocks/moon_rock_03_1k.gltf" id="4_872ht"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gxhll"]
+
+[sub_resource type="Gradient" id="Gradient_1di36"]
+offsets = PackedFloat32Array(0.06069364, 0.5520231, 0.71387285)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mek2u"]
+gradient = SubResource("Gradient_1di36")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ik6fu"]
+albedo_color = Color(0.4392157, 0.1882353, 0, 0.88235295)
+roughness_texture = SubResource("GradientTexture1D_mek2u")
+
+[sub_resource type="SphereMesh" id="SphereMesh_872ht"]
+material = SubResource("StandardMaterial3D_ik6fu")
+radial_segments = 5
+rings = 3
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ik6fu"]
+direction = Vector3(0, 0, 0)
+spread = 60.0
+initial_velocity_min = 0.29999998
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+color = Color(0.654902, 0.9490196, 0.99607843, 0.16078432)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_872ht"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.68731934, 0.36808434, 0.19594315, 1)
+albedo_texture = ExtResource("2_mek2u")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_p2d0s"]
+material = SubResource("StandardMaterial3D_872ht")
+
+[node name="Rock" type="Area3D" unique_id=181383799]
+script = ExtResource("1_1di36")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1754930848]
+shape = SubResource("SphereShape3D_gxhll")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2078676546]
+visible = false
+mesh = SubResource("SphereMesh_872ht")
+
+[node name="Dust" type="GPUParticles3D" parent="." unique_id=2080299821]
+amount = 20
+lifetime = 0.6
+visibility_aabb = AABB(-4, -4, -4, 10, 10, 10)
+process_material = SubResource("ParticleProcessMaterial_ik6fu")
+draw_pass_1 = SubResource("QuadMesh_p2d0s")
+
+[node name="Spin" type="Node3D" parent="." unique_id=1804829250]
+
+[node name="moon_rock_03_1k" parent="Spin" unique_id=248652725 instance=ExtResource("4_872ht")]
+transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 0, 0, 0)

@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://egjysgnqvyij"]
+
+[ext_resource type="Script" uid="uid://cx24iwfa1bted" path="res://scripts/fire_wall.gd" id="1_1am1r"]
+[ext_resource type="Texture2D" uid="uid://bgbs2r4jc4s05" path="res://assets/PNG (Transparent)/fire_02.png" id="1_6a1qj"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1am1r"]
+height = 2.5
+radius = 2.0
+
+[sub_resource type="Gradient" id="Gradient_1am1r"]
+offsets = PackedFloat32Array(0, 0.5107143, 1)
+colors = PackedColorArray(1, 0.95686275, 0.72156864, 1, 1, 0.4, 0, 1, 0.26666668, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4v7oo"]
+gradient = SubResource("Gradient_1am1r")
+
+[sub_resource type="Curve" id="Curve_mnvpy"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
+
+[sub_resource type="CurveTexture" id="CurveTexture_14yw4"]
+curve = SubResource("Curve_mnvpy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1am1r"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.1
+emission_ring_radius = 2.0
+emission_ring_inner_radius = 1.8
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 5.0
+initial_velocity_min = 3.0
+initial_velocity_max = 5.5
+gravity = Vector3(0, 2, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_14yw4")
+color = Color(0.9843137, 0.7176471, 0.25490198, 1)
+color_ramp = SubResource("GradientTexture1D_4v7oo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7kba2"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_6a1qj")
+billboard_mode = 2
+grow_amount = 10.909
+
+[sub_resource type="QuadMesh" id="QuadMesh_4v7oo"]
+material = SubResource("StandardMaterial3D_7kba2")
+
+[node name="Firewall" type="Area3D" unique_id=1297357548]
+script = ExtResource("1_1am1r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=607943855]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+shape = SubResource("CylinderShape3D_1am1r")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=2012782235]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+amount = 2000
+lifetime = 1.2
+process_material = SubResource("ParticleProcessMaterial_1am1r")
+draw_pass_1 = SubResource("QuadMesh_4v7oo")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1632868774]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+light_color = Color(0.9512325, 0.19292581, 5.0248505e-05, 1)
